@@ -1,6 +1,8 @@
+// DEFAULT
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  border-bottom: solid 1px $light-gray;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +11,36 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+// LOGO
+.title {
+  color:$green;
+}
+
+// SIGNUP
+
+.signup {
+    display: flex;
+    border: 1px solid $green;
+    border-radius: 8px;
+    width: 140px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup:hover {
+  opacity: 0.8;
+}
+
+.li-signup {
+  color:$green;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.li-signup:hover {
+  color:$green;
+  text-decoration: none;
 }
