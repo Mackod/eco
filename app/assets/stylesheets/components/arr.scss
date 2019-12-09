@@ -1,0 +1,37 @@
+.table-arr {
+  width: 30%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0px;
+  grid-column-gap: 0px;
+  grid-template-rows: auto;
+}
+
+.arr {
+  color: $light-green;
+  display: block;
+  border: 1px solid $light-green;
+  border-radius: 4px;
+  text-align: center;
+  width: 250px;
+  height: 30px;
+  background-color: white;
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.arr:hover {
+  text-decoration: none;
+  color: white;
+  display: block;
+  border: 1px solid $light-green;
+  border-radius: 4px;
+  text-align: center;
+  width: 251px;
+  height: 31px;
+  background-color: $light-green;
+  font-size: 20px;
+  opacity: 0.9;
+}

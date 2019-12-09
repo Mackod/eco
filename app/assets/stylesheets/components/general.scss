@@ -1,3 +1,16 @@
 body {
   background-color: white;
 }
+
+.hidden {
+  display:none;
+}
+
+.title-arr {
+  font-weight: bold;
+  color: $green;
+  width: 532px;
+  margin: 0 auto;
+  border-bottom: solid 1px $light-gray;
+  margin-bottom: 20px;
+}
