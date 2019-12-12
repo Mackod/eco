@@ -1,0 +1,17 @@
+<div class="main-container">
+
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="content">
+        <h2 class="post-username"><%= post.user.username %></h2>
+        <h2 class= "post-title"><%= post.title %></h2>
+        <p>Content: <%= post.content %></p>
+      </div>
+      <div class="upvotes">
+        <i class="fas fa-sort-up"></i>
+        <p><%= PostUpvote.where(post: post).length %></p>
+      </div>
+    </div>
+  <% end %>
+
+</div>

@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_175235) do
+ActiveRecord::Schema.define(version: 2019_12_12_173246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answer_upvotes", force: :cascade do |t|
+    t.bigint "answer_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_answer_upvotes_on_answer_id"
+    t.index ["user_id"], name: "index_answer_upvotes_on_user_id"
+  end
+
+  create_table "answers", force: :cascade do |t|
+    t.text "content"
+    t.bigint "comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_answers_on_comment_id"
+    t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "comment_upvotes", force: :cascade do |t|
+    t.bigint "comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_upvotes_on_comment_id"
+    t.index ["user_id"], name: "index_comment_upvotes_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "post_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "post_upvotes", force: :cascade do |t|
     t.bigint "post_id"
@@ -47,6 +85,14 @@ ActiveRecord::Schema.define(version: 2019_12_11_175235) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answer_upvotes", "answers"
+  add_foreign_key "answer_upvotes", "users"
+  add_foreign_key "answers", "comments"
+  add_foreign_key "answers", "users"
+  add_foreign_key "comment_upvotes", "comments"
+  add_foreign_key "comment_upvotes", "users"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "post_upvotes", "posts"
   add_foreign_key "post_upvotes", "users"
   add_foreign_key "posts", "users"
