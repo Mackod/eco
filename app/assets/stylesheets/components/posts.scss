@@ -1,0 +1,28 @@
+// Post box
+.post {
+  display: flex;
+  padding: 5px;
+  margin-top: 15px;
+  border: 1px solid $light-gray;
+  border-radius: 6px;
+  background-color: white;
+}
+
+.post:hover {
+  border: 1px solid $gray;
+}
+
+// Username
+
+.post-username {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+// Upvote Bar
+
+.upvotes {
+  border-left: 1px solid $light-gray;
+  padding: 10px;
+  margin-left: 10px
+}
