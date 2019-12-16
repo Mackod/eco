@@ -12,6 +12,12 @@
   border: 1px solid $gray;
 }
 
+// Post title
+
+.post-title {
+  font-size: 20px;
+}
+
 // Username
 
 .post-username {
@@ -25,4 +31,23 @@
   border-left: 1px solid $light-gray;
   padding: 10px;
   margin-left: 10px
+}
+
+.upvote-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  width: 20px;
+  height: 22px;
+  color: $gray;
+}
+
+.upvote-icon:hover {
+  border: solid 1px $light-green;
+  border-radius: 2px;
+  background-color: $light-green;
+  color: white;
+  width: 20px;
+  height: 20px;
 }
