@@ -9,7 +9,6 @@
 }
 
 .post:hover {
-  border: 1px solid $gray;
 }
 
 // Post title
@@ -28,6 +27,10 @@
 // Upvote Bar
 
 .upvotes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   border-left: 1px solid $light-gray;
   padding: 10px;
   margin-left: 10px
@@ -39,7 +42,7 @@
   align-items: center;
   padding-top: 5px;
   width: 20px;
-  height: 22px;
+  height: 20px;
   color: $gray;
 }
 
@@ -50,4 +53,8 @@
   color: white;
   width: 20px;
   height: 20px;
+}
+
+.number-upvotes {
+  margin-top: 10px;
 }

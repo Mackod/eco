@@ -8,8 +8,8 @@
         <p>Content: <%= post.content %></p>
       </div>
       <div class="upvotes">
-        <i class="fas fa-sort-up upvote-icon"></i>
-        <p><%= PostUpvote.where(post: post).length %></p>
+        <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
+        <div class="number-upvotes"><%= post.post_upvotes.length %></div>
       </div>
     </div>
   <% end %>
