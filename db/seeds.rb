@@ -50,7 +50,7 @@ tony = User.create!(
   )
 
 
-puts "Creating Upvotes for Johns Posts..."
+puts "Creating Upvotes and Comments for Johns Posts..."
 
 10.times {
   post = Post.create!(
@@ -64,9 +64,16 @@ puts "Creating Upvotes for Johns Posts..."
             post: post
           )
   }
+  rand(1...10).times {
+  comment = Comment.create!(
+            user: [john, louis, melodie, aaron, tony].sample,
+            post: post,
+            content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
+          )
+  }
 }
 
-puts "Creating Upvotes for Louis's Posts..."
+puts "Creating Upvotes and Comments for Louis's Posts..."
 
 10.times {
   post = Post.create!(
@@ -80,9 +87,16 @@ puts "Creating Upvotes for Louis's Posts..."
             post: post
           )
   }
+  rand(1...10).times {
+  comment = Comment.create!(
+            user: [john, louis, melodie, aaron, tony].sample,
+            post: post,
+            content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
+          )
+  }
 }
 
-puts "Creating Upvotes for Melodies Posts..."
+puts "Creating Upvotes and Comments for Melodies Posts..."
 
 10.times {
   post = Post.create!(
@@ -96,9 +110,16 @@ puts "Creating Upvotes for Melodies Posts..."
             post: post
           )
   }
+  rand(1...10).times {
+  comment = Comment.create!(
+            user: [john, louis, melodie, aaron, tony].sample,
+            post: post,
+            content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
+          )
+  }
 }
 
-puts "Creating Upvotes for Aarons Posts..."
+puts "Creating Upvotes and Comments for Aarons Posts..."
 
 10.times {
   post = Post.create!(
@@ -112,9 +133,16 @@ puts "Creating Upvotes for Aarons Posts..."
             post: post
           )
   }
+  rand(1...10).times {
+  comment = Comment.create!(
+            user: [john, louis, melodie, aaron, tony].sample,
+            post: post,
+            content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
+          )
+  }
 }
 
-puts "Creating Upvotes for Tonys Posts..."
+puts "Creating Upvotes and Comments for Tonys Posts..."
 
 10.times {
   post = Post.create!(
@@ -126,6 +154,13 @@ puts "Creating Upvotes for Tonys Posts..."
   upvote = PostUpvote.create!(
             user: [john, louis, melodie, aaron, tony].sample,
             post: post
+          )
+  }
+  rand(1...10).times {
+  comment = Comment.create!(
+            user: [john, louis, melodie, aaron, tony].sample,
+            post: post,
+            content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
           )
   }
 }
