@@ -1,10 +1,12 @@
 <div class="main-container">
 
+  <%= render "new" %>
+
   <% @posts.each do |post| %>
     <div class="post">
       <div class="content">
-        <h2 class="post-username"><%= post.user.username %></h2>
-        <h2 class= "post-title"><%= post.title %></h2>
+        <div class="post-username"><%= post.user.username %></div>
+        <div class= "post-title"><%= post.title %></div>
         <p>Content: <%= post.content %></p>
       </div>
       <div class="upvotes">
