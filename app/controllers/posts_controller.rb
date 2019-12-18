@@ -2,6 +2,11 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @post  = Post.new
+    @postupvote = PostUpvote.new
+    @comment = Comment.new
+    @commentupvote = CommentUpvote.new
+    @answer = Answer.new
+    @answerupvote = AnswerUpvote.new
   end
 
   def create
