@@ -3,7 +3,8 @@ start_time = Time.now
 # Destroy
 
 puts "Destroying all data"
-
+Answer.destroy_all
+Comment.destroy_all
 PostUpvote.destroy_all
 Post.destroy_all
 User.destroy_all
@@ -70,6 +71,14 @@ puts "Creating Upvotes and Comments for Johns Posts..."
             post: post,
             content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
           )
+  #CREATING ANSWERS FOR THE COMMENT
+      rand(1...3).times {
+      answer = Answer.create!(
+                user: [john, louis, melodie, aaron, tony].sample,
+                comment: comment,
+                content: ["Best comment by far", "Completely disagree", "TWow, that is a good way to put it"].sample
+              )
+    }
   }
 }
 
@@ -93,6 +102,14 @@ puts "Creating Upvotes and Comments for Louis's Posts..."
             post: post,
             content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
           )
+  #CREATING ANSWERS FOR THE COMMENT
+      rand(1...3).times {
+      answer = Answer.create!(
+                user: [john, louis, melodie, aaron, tony].sample,
+                comment: comment,
+                content: ["Best comment by far", "Completely disagree", "TWow, that is a good way to put it"].sample
+              )
+    }
   }
 }
 
@@ -116,6 +133,14 @@ puts "Creating Upvotes and Comments for Melodies Posts..."
             post: post,
             content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
           )
+  #CREATING ANSWERS FOR THE COMMENT
+      rand(1...3).times {
+      answer = Answer.create!(
+                user: [john, louis, melodie, aaron, tony].sample,
+                comment: comment,
+                content: ["Best comment by far", "Completely disagree", "TWow, that is a good way to put it"].sample
+              )
+    }
   }
 }
 
@@ -139,29 +164,48 @@ puts "Creating Upvotes and Comments for Aarons Posts..."
             post: post,
             content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
           )
+  #CREATING ANSWERS FOR THE COMMENT
+      rand(1...3).times {
+      answer = Answer.create!(
+                user: [john, louis, melodie, aaron, tony].sample,
+                comment: comment,
+                content: ["Best comment by far", "Completely disagree", "TWow, that is a good way to put it"].sample
+              )
+    }
   }
 }
 
 puts "Creating Upvotes and Comments for Tonys Posts..."
 
 10.times {
+  #CREATING 1 POST
   post = Post.create!(
             title: Faker::Restaurant.name,
             content: Faker::Restaurant.description,
             user: tony
           )
+  #CREATING UPVOTES FOR THE POST
   rand(1...1000).times {
   upvote = PostUpvote.create!(
             user: [john, louis, melodie, aaron, tony].sample,
             post: post
           )
   }
-  rand(1...10).times {
-  comment = Comment.create!(
-            user: [john, louis, melodie, aaron, tony].sample,
-            post: post,
-            content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
-          )
+  #CREATING COMMENTS FOR THE POST
+    rand(1...10).times {
+    comment = Comment.create!(
+              user: [john, louis, melodie, aaron, tony].sample,
+              post: post,
+              content: ["I strongly disagree with this", "The economy could be doing better", "To be honest, if we were living in an anarchy everything would be allright"].sample
+            )
+    #CREATING ANSWERS FOR THE COMMENT
+      rand(1...3).times {
+      answer = Answer.create!(
+                user: [john, louis, melodie, aaron, tony].sample,
+                comment: comment,
+                content: ["Best comment by far", "Completely disagree", "TWow, that is a good way to put it"].sample
+              )
+    }
   }
 }
 
