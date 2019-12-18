@@ -4,16 +4,30 @@
 
   <% @posts.each do |post| %>
     <div class="post">
+
       <div class="content">
         <div class="post-username"><%= post.user.username %></div>
         <div class= "post-title"><%= post.title %></div>
         <p>Content: <%= post.content %></p>
       </div>
+
       <div class="upvotes">
         <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
         <div class="number-upvotes"><%= post.post_upvotes.length %></div>
       </div>
+
+      <div class="comments">
+        <% post.comments.each do |comment| %>
+        <div class="content">
+          <h2 class="post-username"><%= comment.user.username %></h2>
+          <h2 class= "post-title"><%= comment.title %></h2>
+          <p>Content: <%= comment.content %></p>
+        </div>
+        <%= end %>
+      </div>
+
     </div>
+
   <% end %>
 
 </div>
