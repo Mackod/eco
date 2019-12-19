@@ -20,12 +20,8 @@
           </div>
         </li>
       <% else %>
-        <div class="signup">
-          <%= link_to "Signup", new_user_registration_path, class: "li-signup" %>
-        </div>
-        <div class="login">
-          <%= link_to "Login", new_user_session_path, class: "li-login" %>
-        </div>
+        <button class="li-signup" id="modal-btn">S'identifier</button>
+          <%= render "devise/shared/login_form" %>
         </li>
       <% end %>
     </ul>
