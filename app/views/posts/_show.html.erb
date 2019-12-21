@@ -1,0 +1,78 @@
+<div class="modal-post">
+  <div class="post-container">
+    <div class="modal-content-post">
+
+      <!-- MAIN POST ----------------------------------------------------------------------------->
+      <div class="post-content">
+
+        <!-- POST UPVOTES --------------------------------------------------------->
+        <div class="upvotes-show">
+          <!-- upvote button -->
+          <%= simple_form_for (@postupvote) do |f| %>
+            <%= f.input :post, as: :hidden, input_html: {value: post.id} %>
+            <%= button_tag type: 'submit' do %>
+              <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
+            <% end %>
+          <% end %>
+          <!-- upvote number -->
+          <div class="number-upvotes-show"><%= post.post_upvotes.length %></div>
+        </div>
+        <!-- POST UPVOTES END ----------------------------------------------------->
+
+        <!-- POST INFO ------------------------------------------------------------>
+        <div class="content-show">
+          <div class="post-username-show"><%= post.user.username %></div>
+          <div class= "post-title-show"><%= post.title %></div>
+          <p><%= post.content %></p>
+        </div>
+        <!-- MAIN INFO END -------------------------------------------------------->
+
+      </div>
+      <!-- MAIN POST END ------------------------------------------------------------------------->
+
+      <!-- CREATE NEW COMMENT ------------------------------------------->
+      <div class="new-comment">
+        <%= simple_form_for (@comment) do |f| %>
+          <%= f.input :post, as: :hidden, input_html: {value: post.id} %>
+          <%= f.input :content, label: false %>
+          <div class="submit-comment-box">
+            <div class="comment-btn-box">
+              <%= f.button :submit, class: "submit-comment" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <!-- CREATE NEW COMMENT END --------------------------------------->
+
+      <!-- COMMENTS ----------------------------------------------------------------------------------------------------->
+      <div class="comments">
+        <% post.comments.each do |comment| %>
+        <!-- 1 COMMENT ----------------------------------------------------------------------->
+        <div class="comment-show">
+          <!-- COMMENT UPVOTES -------------------------------------------->
+          <div class="comment-upvotes">
+              <%= simple_form_for (@commentupvote) do |f| %>
+                <%= f.input :comment, as: :hidden, input_html: {value: comment.id} %>
+                  <%= button_tag type: 'submit' do %>
+                      <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
+                  <% end %>
+              <% end %>
+              <div class="comment-number-upvotes"><%= comment.comment_upvotes.length %></div>
+          </div>
+          <!-- COMMENT UPVOTES END ---------------------------------------->
+
+          <!-- COMMENT CONTENT -------------------------------------------->
+          <div class="comment-content">
+            <div class="post-username-comment"><%= comment.user.username %></div>
+            <p>Content: <%= comment.content %></p>
+          </div>
+          <!-- COMMENT CONTENT END ---------------------------------------->
+        </div>
+        <!-- 1 COMMENT END ------------------------------------------------------------------->
+        <% end %>
+      </div>
+      <!-- COMMENTS END ------------------------------------------------------------------------------------------------->
+
+    </div>
+  </div>
+</div>

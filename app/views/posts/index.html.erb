@@ -11,71 +11,9 @@
         <div class="post-username"><%= post.user.username %></div>
         <div class= "post-title"><%= post.title %></div>
         <p>Content: <%= post.content %></p>
-
-        <!-- CREATE NEW COMMENT -->
-        <div class="post">
-          <%= simple_form_for (@comment) do |f| %>
-            <%= f.input :post, as: :hidden, input_html: {value: post.id} %>
-            <%= f.input :content %>
-            <%= f.button :submit %>
-          <% end %>
-        </div>
-
-        <!-- COMMENTS -->
-        <div class="comments">
-          <% post.comments.each do |comment| %>
-            <div class="content">
-              <div class="post-username"><%= comment.user.username %></div>
-              <p>Content: <%= comment.content %></p>
-
-              <!-- COMMENT UPVOTES -->
-              <div class="upvotes">
-                  <%= simple_form_for (@commentupvote) do |f| %>
-                    <%= f.input :comment, as: :hidden, input_html: {value: comment.id} %>
-                      <%= button_tag type: 'submit' do %>
-                          <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
-                      <% end %>
-                  <% end %>
-                  <div class="number-upvotes"><%= comment.comment_upvotes.length %></div>
-              </div>
-
-        <!-- CREATE NEW ANSWER -->
-        <div class="post">
-          <%= simple_form_for (@answer) do |f| %>
-            <%= f.input :comment, as: :hidden, input_html: {value: comment.id} %>
-            <%= f.input :content %>
-            <%= f.button :submit %>
-          <% end %>
-        </div>
-
-        <!-- ANSWERS -->
-              <div class="answers">
-                <% comment.answers.each do |answer| %>
-                  <div class="content">
-                    <div class="post-username"><%= answer.user.username %></div>
-                    <p>Content: <%= answer.content %></p>
-                  </div>
-                  <!-- ANSWER UPVOTES -->
-                  <div class="upvotes">
-                      <%= simple_form_for (@answerupvote) do |f| %>
-                        <%= f.input :answer, as: :hidden, input_html: {value: answer.id} %>
-                          <%= button_tag type: 'submit' do %>
-                              <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
-                          <% end %>
-                      <% end %>
-                      <div class="number-upvotes"><%= answer.answer_upvotes.length %></div>
-                  </div>
-
-                <% end %>
-              </div>
-
-            </div>
-          <% end %>
-        </div>
-
       </div>
 
-        <!-- POST UPVOTES -->
+      <!-- POST UPVOTES -->
       <div class="upvotes">
           <%= simple_form_for (@postupvote) do |f| %>
             <%= f.input :post, as: :hidden, input_html: {value: post.id} %>
@@ -86,6 +24,8 @@
           <div class="number-upvotes"><%= post.post_upvotes.length %></div>
       </div>
 
+    <button class="li-signup" id="modal-btn-post">SHOW</button>
+    <%= render partial: "show",:locals => {:post => post} %>
     </div>
 
   <% end %>

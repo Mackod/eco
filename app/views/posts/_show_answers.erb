@@ -1,0 +1,29 @@
+      <!-- CREATE NEW ANSWER -->
+      <div class="new-answer">
+        <%= simple_form_for (@answer) do |f| %>
+          <%= f.input :comment, as: :hidden, input_html: {value: comment.id} %>
+          <%= f.input :content %>
+          <%= f.button :submit %>
+        <% end %>
+      </div>
+
+      <!-- ANSWERS -->
+      <div class="answers">
+        <% comment.answers.each do |answer| %>
+          <div class="answer-content">
+            <div class="answer-post-username"><%= answer.user.username %></div>
+            <p>Content: <%= answer.content %></p>
+          </div>
+          <!-- ANSWER UPVOTES -->
+          <div class="answer-upvotes">
+              <%= simple_form_for (@answerupvote) do |f| %>
+                <%= f.input :answer, as: :hidden, input_html: {value: answer.id} %>
+                  <%= button_tag type: 'submit' do %>
+                    <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
+                  <% end %>
+              <% end %>
+              <div class="answer-number-upvotes"><%= answer.answer_upvotes.length %></div>
+          </div>
+
+        <% end %>
+      </div>
