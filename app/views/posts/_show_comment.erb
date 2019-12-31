@@ -1,0 +1,23 @@
+<!-- 1 COMMENT ----------------------------------------------------------------------->
+<div class="comment-show">
+  <!-- COMMENT UPVOTES -------------------------------------------->
+  <div class="comment-upvotes">
+      <%= simple_form_for (@commentupvote) do |f| %>
+        <%= f.input :comment, as: :hidden, input_html: {value: comment.id} %>
+          <%= button_tag type: 'submit' do %>
+              <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
+          <% end %>
+      <% end %>
+      <div class="comment-number-upvotes"><%= comment.comment_upvotes.length %></div>
+  </div>
+  <!-- COMMENT UPVOTES END ---------------------------------------->
+
+  <!-- COMMENT CONTENT -------------------------------------------->
+  <div class="comment-content">
+    <div class="post-username-comment"><%= comment.user.username %></div>
+    <p><%= comment.content %></p>
+  </div>
+  <!-- COMMENT CONTENT END ---------------------------------------->
+</div>
+<%= render partial: "posts/show_answers",:locals => {:comment => comment} %>
+<!-- 1 COMMENT END ------------------------------------------------------------------->

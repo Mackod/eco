@@ -8,7 +8,9 @@
     <div class="post">
 
       <div class="content">
-        <div class="post-username"><%= post.user.username %></div>
+        <div class="username-and-time">
+          <div class="post-username"><%= post.user.username %></div> <div class="time-ago">Posted <%= time_ago_in_words(post.created_at) %> ago</div>
+        </div>
         <div class= "post-title"><%= post.title %></div>
         <p>Content: <%= post.content %></p>
       </div>
@@ -21,11 +23,16 @@
                   <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
               <% end %>
           <% end %>
-          <div class="number-upvotes"><%= post.post_upvotes.length %></div>
+          <div class="number-upvotes"><%= post.post_upvotes.length - post.post_downvotes.length %></div>
+          <%= simple_form_for (@postdownvote) do |f| %>
+            <%= f.input :post, as: :hidden, input_html: {value: post.id} %>
+              <%= button_tag type: 'submit' do %>
+                  <div class="upvote-icon"><i class="fas fa-sort-down"></i></div>
+              <% end %>
+          <% end %>
       </div>
 
-    <button class="li-signup" id="modal-btn-post">SHOW</button>
-    <%= render partial: "show",:locals => {:post => post} %>
+    <%= render partial: "show_post",:locals => {:post => post} %>
     </div>
 
   <% end %>

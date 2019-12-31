@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     @posts = Post.all.first(5)
     @post  = Post.new
     @postupvote = PostUpvote.new
+    @postdownvote = PostDownvote.new
     @comment = Comment.new
     @commentupvote = CommentUpvote.new
     @answer = Answer.new
@@ -19,6 +20,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:name, :content)
+    params.require(:post).permit(:title, :content)
   end
 end

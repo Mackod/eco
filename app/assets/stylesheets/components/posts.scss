@@ -8,19 +8,40 @@
   background-color: white;
 }
 
+.post-for-new {
+  display: flex;
+  padding: 5px;
+  margin-top: 15px;
+  border: 1px solid $light-gray;
+  border-radius: 6px;
+  background-color: white;
+}
+
 .post:hover {
+  cursor: pointer;
+}
+
+// Time and username
+
+.post-username {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.username-and-time{
+  display:flex;
+}
+
+.time-ago {
+  color: lightgrey;
+  font-size: 12px;
+  margin-left: 8px;
 }
 
 // Post title
 
 .post-title {
   font-size: 20px;
-}
-
-// Username
-
-.post-username {
-  font-size: 12px;
   font-weight: bold;
 }
 
