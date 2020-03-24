@@ -8,7 +8,13 @@
               <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
           <% end %>
       <% end %>
-      <div class="comment-number-upvotes"><%= comment.comment_upvotes.length %></div>
+      <div class="comment-number-upvotes"><%= comment.comment_upvotes.length - comment.comment_downvotes.length %></div>
+      <%= simple_form_for (@commentdownvote) do |f| %>
+        <%= f.input :comment, as: :hidden, input_html: {value: comment.id} %>
+          <%= button_tag type: 'submit' do %>
+              <div class="downvote-icon"><i class="fas fa-sort-down"></i></div>
+          <% end %>
+      <% end %>
   </div>
   <!-- COMMENT UPVOTES END ---------------------------------------->
 

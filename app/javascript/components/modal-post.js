@@ -1,13 +1,13 @@
-let modalBtns   = document.querySelectorAll(".post")
+let modalBtns   = document.querySelectorAll(".content")
 let modals    = document.querySelectorAll(".modal-post")
 
 modalBtns.forEach((modalBtn) => {
   modalBtn.onclick = function(){
-    modalBtn.lastElementChild.style.display = "block"
+    modalBtn.nextElementSibling.style.display = "block"
     document.body.style.overflowY = "hidden";
     window.onclick = function(e){
-      if(e.target == modalBtn.lastElementChild){
-        modalBtn.lastElementChild.style.display = "none"
+      if(e.target == modalBtn.nextElementSibling){
+        modalBtn.nextElementSibling.style.display = "none"
         document.body.style.overflowY = "auto";
       }
     }

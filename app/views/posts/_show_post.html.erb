@@ -15,7 +15,13 @@
             <% end %>
           <% end %>
           <!-- upvote number -->
-          <div class="number-upvotes-show"><%= post.post_upvotes.length %></div>
+          <div class="number-upvotes-show"><%= post.post_upvotes.length - post.post_downvotes.length %></div>
+          <%= simple_form_for (@postdownvote) do |f| %>
+            <%= f.input :post, as: :hidden, input_html: {value: post.id} %>
+              <%= button_tag type: 'submit' do %>
+                  <div class="downvote-icon"><i class="fas fa-sort-down"></i></div>
+              <% end %>
+          <% end %>
         </div>
         <!-- POST UPVOTES END ----------------------------------------------------->
 

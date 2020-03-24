@@ -19,7 +19,13 @@
                 <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
               <% end %>
           <% end %>
-          <div class="answer-number-upvotes"><%= answer.answer_upvotes.length %></div>
+          <div class="answer-number-upvotes"><%= answer.answer_upvotes.length - answer.answer_downvotes.length %></div>
+          <%= simple_form_for (@answerdownvote) do |f| %>
+            <%= f.input :answer, as: :hidden, input_html: {value: answer.id} %>
+              <%= button_tag type: 'submit' do %>
+                <div class="downvote-icon"><i class="fas fa-sort-down"></i></div>
+              <% end %>
+          <% end %>
       </div>
       <!-- ANSWER UPVOTES END ----------------------------------------------------->
 

@@ -1,19 +1,21 @@
 <div class="main-container">
 
   <!-- CREATE NEW POST -->
+  <input class="new-post" placeholder="Create Post...">
   <%= render "new" %>
+
+  <div class="filter-posts">
+    <i class="fas fa-filter"></i>
+    <select id="filter" name="filter">
+    <option value="1">New</option>
+    <option value="2">Best</option>
+    <option value="3">Top</option>
+  </select>
+  </div>
 
   <!-- POSTS -->
   <% @posts.each do |post| %>
     <div class="post">
-
-      <div class="content">
-        <div class="username-and-time">
-          <div class="post-username"><%= post.user.username %></div> <div class="time-ago">Posted <%= time_ago_in_words(post.created_at) %> ago</div>
-        </div>
-        <div class= "post-title"><%= post.title %></div>
-        <p>Content: <%= post.content %></p>
-      </div>
 
       <!-- POST UPVOTES -->
       <div class="upvotes">
@@ -23,14 +25,26 @@
                   <div class="upvote-icon"><i class="fas fa-sort-up"></i></div>
               <% end %>
           <% end %>
-          <div class="number-upvotes"><%= post.post_upvotes.length - post.post_downvotes.length %></div>
+          <div class="number-upvotes-show"><%= post.post_upvotes.length - post.post_downvotes.length %></div>
           <%= simple_form_for (@postdownvote) do |f| %>
             <%= f.input :post, as: :hidden, input_html: {value: post.id} %>
               <%= button_tag type: 'submit' do %>
-                  <div class="upvote-icon"><i class="fas fa-sort-down"></i></div>
+                  <div class="downvote-icon"><i class="fas fa-sort-down"></i></div>
               <% end %>
           <% end %>
       </div>
+
+      <div class="content">
+        <div class="post-info">
+          <div class="username-and-time">
+            <div class="post-username"><%= post.user.username %></div> <div class="time-ago">Posted <%= time_ago_in_words(post.created_at) %> ago</div>
+          </div>
+          <div class= "post-title"><%= post.title %></div>
+          <p>Content: <%= post.content %></p>
+        </div>
+        <div class="post-footer"><i class="fas fa-comment-alt"></i><%= post.comments.length %> Comments</div>
+      </div>
+
 
     <%= render partial: "show_post",:locals => {:post => post} %>
     </div>

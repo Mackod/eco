@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_30_163320) do
+ActiveRecord::Schema.define(version: 2020_03_16_182454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answer_downvotes", force: :cascade do |t|
+    t.bigint "answer_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_answer_downvotes_on_answer_id"
+    t.index ["user_id"], name: "index_answer_downvotes_on_user_id"
+  end
 
   create_table "answer_upvotes", force: :cascade do |t|
     t.bigint "answer_id"
@@ -32,6 +41,15 @@ ActiveRecord::Schema.define(version: 2019_12_30_163320) do
     t.datetime "updated_at", null: false
     t.index ["comment_id"], name: "index_answers_on_comment_id"
     t.index ["user_id"], name: "index_answers_on_user_id"
+  end
+
+  create_table "comment_downvotes", force: :cascade do |t|
+    t.bigint "comment_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_downvotes_on_comment_id"
+    t.index ["user_id"], name: "index_comment_downvotes_on_user_id"
   end
 
   create_table "comment_upvotes", force: :cascade do |t|
@@ -94,10 +112,14 @@ ActiveRecord::Schema.define(version: 2019_12_30_163320) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answer_downvotes", "answers"
+  add_foreign_key "answer_downvotes", "users"
   add_foreign_key "answer_upvotes", "answers"
   add_foreign_key "answer_upvotes", "users"
   add_foreign_key "answers", "comments"
   add_foreign_key "answers", "users"
+  add_foreign_key "comment_downvotes", "comments"
+  add_foreign_key "comment_downvotes", "users"
   add_foreign_key "comment_upvotes", "comments"
   add_foreign_key "comment_upvotes", "users"
   add_foreign_key "comments", "posts"

@@ -1,24 +1,23 @@
 // Post box
 .post {
   display: flex;
-  padding: 5px;
   margin-top: 15px;
-  border: 1px solid $light-gray;
-  border-radius: 6px;
-  background-color: white;
-}
-
-.post-for-new {
-  display: flex;
-  padding: 5px;
-  margin-top: 15px;
-  border: 1px solid $light-gray;
+  border: 1px solid lightgrey;
   border-radius: 6px;
   background-color: white;
 }
 
 .post:hover {
   cursor: pointer;
+  border: 1px solid black;
+}
+
+.content {
+  padding: 5px;
+}
+
+.content p {
+  margin: 0px;
 }
 
 // Time and username
@@ -54,7 +53,8 @@
   flex-direction: column;
   border-left: 1px solid $light-gray;
   padding: 10px;
-  margin-left: 10px
+  background-color: $very-light-gray;
+  border-radius: 6px 0px 0px 6px;
 }
 
 .upvote-icon {
@@ -62,6 +62,16 @@
   justify-content: center;
   align-items: center;
   padding-top: 5px;
+  width: 20px;
+  height: 20px;
+  color: $gray;
+}
+
+.downvote-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 5px;
   width: 20px;
   height: 20px;
   color: $gray;
@@ -76,6 +86,57 @@
   height: 20px;
 }
 
+.downvote-icon:hover {
+  border: solid 1px $light-green;
+  border-radius: 2px;
+  background-color: $light-green;
+  color: white;
+  width: 20px;
+  height: 20px;
+}
+
 .number-upvotes {
   margin-top: 10px;
+}
+
+// Post footer
+.post-footer {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  color:$comment-gray;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.post-footer:hover {
+background-color: $hover-gray;
+border-radius: 2px;
+}
+
+.fas.fa-comment-alt {
+  padding-right: 5px;
+}
+
+//Filter Posts
+
+.filter-posts{
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+  width: 80px;
+  height: 30px;
+  margin-top: 12px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  color: $duke;
+}
+
+#filter{
+  border: 0px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 12px;
+  font-family: helvetica;
 }

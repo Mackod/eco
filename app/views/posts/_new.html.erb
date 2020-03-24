@@ -1,7 +1,9 @@
 <div class="post-for-new">
   <%= simple_form_for @post do |f| %>
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.button :submit %>
+    <%= f.input :title, label: false, placeholder: "Post", input_html: {class: "new-post-title"} %>
+    <%= f.input :content, label: false, placeholder: "Content"  %>
+    <div class="submit-post-box">
+      <%= f.button :submit, class: "submit-post" %>
+    </div>
   <% end %>
 </div>
